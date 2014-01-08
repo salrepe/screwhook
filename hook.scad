@@ -19,6 +19,8 @@ module complexObject() {
       // middle upper tab hook
         translate([-35, 0, 10])
         rotate
+
+      // end
         
     }
 
