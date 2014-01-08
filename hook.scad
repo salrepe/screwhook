@@ -17,9 +17,9 @@ module complexObject() {
       //end
 
       //middle upper tab hook
-        	translate([-25, 0, 30])
-        	rotate([0,45,0])
-			cube([tab_thickness, tab_width, 30], center=true);
+        translate([-25, 0, 30])
+        rotate([0,45,0])
+	cube([tab_thickness, tab_width, 30], center=true);
       //end
         
     }
