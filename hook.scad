@@ -11,27 +11,27 @@ module complexObject() {
       //cylinder(r=(co_radius-10), h=co_height, center=true);
       cube([70, tab_width, tab_thickness], center=true);
       
-      // lower tab hook
+      //lower tab hook
         translate([-35, 0, 10])
         cube([tab_thickness, tab_width, 30], center=true);
-      // end
+      //end
 
-      // middle upper tab hook
-        translate([-35, 0, 10])
-        rotate
-
-      // end
+      //middle upper tab hook
+        	translate([-25, 0, 30])
+        	rotate([0,45,0])
+			cube([tab_thickness, tab_width, 30], center=true);
+      //end
         
     }
 
     union() {
       cylinder(r=10, h=co_height*1.1, center=true);
       
-      // upper screw slot
+      //upper screw slot
         translate([ 10, 0, -6 ]) 
         resize([0,15,0]) 
         cylinder(r=15, h=co_height*20, $fn=3);
-      // end
+      //end
 
     }
 
@@ -41,6 +41,7 @@ module complexObject() {
 complexObject();
 
 // include this file with
-// include </Users/spider/Documents/try_openscad/hook.scad>
+// include </Users/spider/Documents/screwhook/hook.scad>
+// include </home/spider/Documents/screwhook/hook.scad>
 // resize([0,10,10]) cylinder(h=10, r=20, center=true, $fn=3);
 
