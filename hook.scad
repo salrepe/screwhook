@@ -50,7 +50,6 @@ module complexObject() {
 complexObject();
 
 // include this file with
-// include </Users/spider/Documents/screwhook/hook.scad>
-// include </home/spider/Documents/screwhook/hook.scad>
+// include <screwhook/hook.scad>
 // resize([0,10,10]) cylinder(h=10, r=20, center=true, $fn=3);
 
