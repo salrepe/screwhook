@@ -7,11 +7,11 @@ base_thickness = 6;
 
 module complexObject() {
   difference() {
-    
+
     union() {
       //cylinder(r=(co_radius-10), h=co_height, center=true);
       cube([70, tab_width, base_thickness], center=true);
-      
+
       //lower tab hook
         translate([-35, 0, 12])
         cube([tab_thickness, tab_width, 30], center=true);
@@ -24,29 +24,32 @@ module complexObject() {
       //end
 
       //upper tab hook
-        translate([-10, 0, 38])
-        rotate([0, 25, 0])
-        resize([-10, 20, 20]) 
-        cylinder(r1=23, r2=1, h=tab_thickness*1.1, $fn=3);
+        translate([-5, 0, 35])
+        rotate([0, 35, 0])
+        resize([50, 40, 12])
+        cylinder(r1=35, r2=1, h=tab_thickness*.75, $fn=3);
 	//cube([tab_thickness, tab_width, 30], center=true);
       //end
-        
+
     }
 
     union() {
       cylinder(r=10, h=base_thickness*1.1, center=true);
-      
+
       //upper screw slot
-        translate([ 10, 0, -6 ]) 
-        resize([0, 15, 0]) 
-        cylinder(r=15, h=base_thickness*2, $fn=3);
+        translate([15,0,0])
+        cube([12,9,base_thickness*1.1], center=true);
+
+        translate([20,0,0])
+        cylinder(r=4.5, h=base_thickness*1.1, center=true);
       //end
 
     }
 
   }
 }
-
+rotate([90, 0, 0])
+translate([0,20,0])
 complexObject();
 
 // include this file with
