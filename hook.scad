@@ -20,7 +20,13 @@ module complexObject() {
       //middle upper tab hook
         translate([-25, 0, 33])
         rotate([0, 45, 0])
-	cube([tab_thickness, tab_width, 30], center=true);
+  cube([tab_thickness, tab_width, 30], center=true);
+      //end
+      //
+      // bridge
+        translate([-23, 0, 12])
+        rotate([0, -30, 0])
+  cube([tab_thickness, tab_width, 28], center=true);
       //end
 
       //upper tab hook
@@ -28,7 +34,7 @@ module complexObject() {
         rotate([0, 35, 0])
         resize([50, 40, 12])
         cylinder(r1=35, r2=1, h=tab_thickness*.75, $fn=3);
-	//cube([tab_thickness, tab_width, 30], center=true);
+  //cube([tab_thickness, tab_width, 30], center=true);
       //end
 
     }
@@ -48,8 +54,9 @@ module complexObject() {
 
   }
 }
-rotate([90, 0, 0])
-translate([0,20,0])
+rotate([0, 270, 0])
+translate([19,0,0])
+resize([35,20,20])
 complexObject();
 
 // include this file with
