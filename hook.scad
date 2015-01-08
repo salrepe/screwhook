@@ -55,8 +55,8 @@ module complexObject() {
   }
 }
 rotate([0, 270, 0])
-translate([19,0,0])
-resize([35,20,20])
+translate([15.5,0,0])
+resize([29,14,14])
 complexObject();
 
 // include this file with
