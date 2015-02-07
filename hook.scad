@@ -1,20 +1,23 @@
-// globals
-co_radius = 40;
-co_height = 10;
-tab_width = 40;
-tab_thickness = 10;
-base_thickness = 6;
+TAB_WIDTH = 40;
+TAB_THICKNESS = 10;
+SUPPORT_THICKNESS = 6;
+SUPPORT_HEIGHT = 70;
+
+function radius(value) = value/2;
 
 module screwHole() {
   module narrowHole() {
+    WIDTH = 9;
+
     module head() {
       translate([20,0,0])
-        cylinder(r=4.5, h=base_thickness*1.1, center=true);
+        cylinder(r=radius(WIDTH), h=SUPPORT_THICKNESS, center=true);
     }
 
     module body() {
+      height = 12;
       translate([15,0,0])
-        cube([12,9,base_thickness*1.1], center=true);
+        cube([height, WIDTH, SUPPORT_THICKNESS], center=true);
     }
 
     head();
@@ -22,7 +25,7 @@ module screwHole() {
   }
 
   module wideHole() {
-   cylinder(r=10, h=base_thickness*1.1, center=true);
+   cylinder(r=10, h=SUPPORT_THICKNESS, center=true);
   }
 
   narrowHole();
@@ -31,31 +34,41 @@ module screwHole() {
 
 module hook() {
   module supportTab() {
-    cube([70, tab_width, base_thickness], center=true);
+    cube([SUPPORT_HEIGHT, TAB_WIDTH, SUPPORT_THICKNESS], center=true);
   }
 
   module baseTab() {
+    length = 30;
+
     translate([-35, 0, 12])
-     cube([tab_thickness, tab_width, 30], center=true);
+     cube([TAB_THICKNESS, TAB_WIDTH, length], center=true);
   }
 
   module inclinedTab() {
+    length = 30;
+    fourty_five_degrees_vertically_right = [0, 45, 0];
+
     translate([-25, 0, 33])
-      rotate([0, 45, 0])
-        cube([tab_thickness, tab_width, 30], center=true);
+      rotate(fourty_five_degrees_vertically_right)
+        cube([TAB_THICKNESS, TAB_WIDTH, length], center=true);
   }
   
   module bridgeTab() {
-	translate([-23, 0, 12])
-      rotate([0, -30, 0])
-        cube([tab_thickness, tab_width, 28], center=true);
+    length = 28;
+    thirty_degrees_vertically_left = [0, -30, 0];
+
+    translate([-23, 0, 12])
+      rotate(thirty_degrees_vertically_left)
+        cube([TAB_THICKNESS, TAB_WIDTH, length], center=true);
   }
 
   module tip() {
+    thirty_five_degrees_vertically_right = [0, 35, 0];
+    
     translate([-5, 0, 35])
-      rotate([0, 35, 0])
+      rotate(thirty_five_degrees_vertically_right)
         resize([50, 40, 12])
-          cylinder(r1=35, r2=1, h=tab_thickness*.75, $fn=3);
+          cylinder(r1=35, r2=1, h=TAB_THICKNESS*.75, $fn=3);
   }
   
   supportTab();
@@ -68,7 +81,7 @@ module hook() {
 module screwHook() {
   difference() {
     union() { hook(); }
-	union() { screwHole(); }
+    union() { screwHole(); }
   }
 }
 
@@ -83,5 +96,4 @@ screwHookDesign();
 
 // include this file with
 // include <screwhook/hook.scad>
-// resize([0,10,10]) cylinder(h=10, r=20, center=true, $fn=3);
 
